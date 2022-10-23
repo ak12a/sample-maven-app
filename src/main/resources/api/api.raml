@@ -1,0 +1,21 @@
+#%RAML 1.0
+---
+title: Mule AWS ECS Fargate Deployment Demo
+version: v1
+mediaType: application/json
+             
+/hello:
+  get:
+    queryParameters: 
+      firstName:
+        required: true
+        type: string
+        maxLength: 20
+        minLength: 2
+        example: "Vishnu"
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {"message":"Hello Vishnu!"}
