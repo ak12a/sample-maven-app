@@ -9,11 +9,11 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - echo $ECR_REPOSITORY
+      - aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
       - REPOSITORY_URI=$ECR_REPOSITORY
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
-      - echo $ECR_REPOSITORY
   build:
     commands:
       - echo Build started on date
