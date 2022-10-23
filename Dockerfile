@@ -13,10 +13,11 @@ RUN apt-get update \
     && mv mule-enterprise-standalone-4.3.0-20210119 mule \
     && apt-get clean
 
-CMD ["/opt/mule/bin/mule"]
+
 
 # EXPOSED Application Port
 EXPOSE 8080
 
 # Copy application files
 COPY ./target/*.jar ${MULE_HOME}/apps
+CMD ["/opt/mule/bin/mule"]
