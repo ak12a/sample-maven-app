@@ -3,14 +3,14 @@ pipeline {
     stages{
         stage("build"){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn  package'
             }
            }
             
         stage("Docker Build"){
             steps{
                 script {
-                   docker.build("sample-mavan-app:${TAG}")
+                   docker.build("sample-mavan-app:${BUILD_NUMBER}")
                 }
             }
         }
