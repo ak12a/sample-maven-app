@@ -19,17 +19,17 @@ pipeline {
                 echo "========executing C========"
             }                            
           }
-    post{
-        always{
-            echo "========always========"
+        post{
+            always{
+                echo "========always========"
+            }
+            success{
+                echo "========pipeline executed successfully ========"
+            }
+            failure{
+                echo "========pipeline execution failed========"
+            }
         }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
-    }
    } 
 }
     
