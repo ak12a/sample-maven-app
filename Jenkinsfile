@@ -19,8 +19,6 @@ pipeline {
                 echo "========executing C========"
             }                            
           }
-        
-    
     post{
         always{
             echo "========always========"
