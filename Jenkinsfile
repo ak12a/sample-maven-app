@@ -10,13 +10,13 @@ pipeline {
         stage("Docker Build"){
             steps{
                 script {
-                   docker.build("sample-mavan-app:${BUILD_NUMBER}")
+                   docker.build("${DOCKER_IMAGE}:${BUILD_NUMBER}")
                 }
             }
         }
-        stage("C"){
+        stage("Image Vulnerability Scan  "){
             steps{
-                echo "========executing C========"
+                sh "trivy image --severity CRITICAL ${DOCKER_IMAGE}:${BUILD_NUMBER}"
             }                            
           }
         }
