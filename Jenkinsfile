@@ -1,18 +1,19 @@
 pipeline {
-    agent { dockerfile true }
+    agent any 
     stages{
         stage("build"){
             steps{
-                mvn install 
+                sh 'mvn clean package'
             }
            }
             
         stage("Docker Build"){
             steps{
-                echo "Building Docker image"
-                docker build . -t sample-maven-app:${BUILD_NUMBER}
+                script{
+                   docker.build("sample-mavan-app:${TAG}")
+                }
             }
-           }
+           
         stage("C"){
             steps{
                 echo "========executing C========"
