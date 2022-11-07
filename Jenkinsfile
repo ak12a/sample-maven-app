@@ -9,17 +9,17 @@ pipeline {
             
         stage("Docker Build"){
             steps{
-                script{
+                script {
                    docker.build("sample-mavan-app:${TAG}")
                 }
             }
-           
+        }
         stage("C"){
             steps{
                 echo "========executing C========"
             }                            
           }
-        }
+        
     
     post{
         always{
@@ -32,6 +32,7 @@ pipeline {
             echo "========pipeline execution failed========"
         }
     }
+   } 
 }
     
       
